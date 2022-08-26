@@ -33,6 +33,6 @@ public class MoveComponent : MonoBehaviour
     //점프
     public void JumpSelf()
     {
-        myCharacter.myRigid.AddForce(Vector2.up * jumpSpeed * Time.deltaTime, ForceMode2D.Impulse);
+        myCharacter.myRigid.velocity = new Vector3(0,jumpSpeed,0);
     }
 }
