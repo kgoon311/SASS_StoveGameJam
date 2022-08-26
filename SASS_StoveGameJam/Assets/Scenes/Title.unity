@@ -408,6 +408,7 @@ GameObject:
   m_Component:
   - component: {fileID: 270257748}
   - component: {fileID: 270257747}
+  - component: {fileID: 270257749}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -428,9 +429,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isNotDestroy: 0
+  Stageidx: 0
   Setting_Panel: {fileID: 955251616}
-  Setting_Open_Button: {fileID: 236984832}
-  Setting_Close_Button: {fileID: 1391555991}
 --- !u!4 &270257748
 Transform:
   m_ObjectHideFlags: 0
@@ -446,6 +446,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &270257749
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 270257746}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0fd4dfcbeeaafae449f4a84a2bbdbe59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isNotDestroy: 0
+  BGMSlider: {fileID: 1622099124}
+  SFXSlider: {fileID: 1241031990}
 --- !u!1 &358817401
 GameObject:
   m_ObjectHideFlags: 0
@@ -1466,7 +1481,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1011255672}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 270257747}
+        m_MethodName: TitleButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1011255672
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1774,7 +1800,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0
+  m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -2340,7 +2366,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0
+  m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -2684,7 +2710,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2033133681}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 270257747}
+        m_MethodName: ExitButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2033133681
 MonoBehaviour:
   m_ObjectHideFlags: 0

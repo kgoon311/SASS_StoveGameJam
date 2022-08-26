@@ -13,6 +13,9 @@ public class SoundManager : Singleton<SoundManager>
     Dictionary<SoundType, float> Volumes = new Dictionary<SoundType, float>() { { SoundType.SFX, 1 }, { SoundType.BGM, 1 } };
     Dictionary<SoundType, AudioSource> AudioSources = new Dictionary<SoundType, AudioSource>();
 
+    [SerializeField] Slider BGMSlider;
+    [SerializeField] Slider SFXSlider;
+
     protected override void Awake()
     {
         base.Awake();
@@ -35,7 +38,6 @@ public class SoundManager : Singleton<SoundManager>
         if (ClipType == SoundType.BGM)
         {
             AudioSources[SoundType.BGM].clip = sounds[clipName];
-            Volumes[SoundType.BGM] = Volume;
             AudioSources[SoundType.BGM].volume = Volume;
             AudioSources[SoundType.BGM].Play();
         }
@@ -44,5 +46,10 @@ public class SoundManager : Singleton<SoundManager>
             AudioSources[ClipType].pitch = Pitch;
             AudioSources[ClipType].PlayOneShot(sounds[clipName], Volume);
         }
+    }
+    private void Update()
+    {
+        AudioSources[SoundType.BGM].volume = BGMSlider.value;
+        AudioSources[SoundType.SFX].volume = SFXSlider.value;
     }
 }

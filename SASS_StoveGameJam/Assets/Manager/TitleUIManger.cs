@@ -9,6 +9,6 @@ public class TitleUIManger : MonoBehaviour
 
     public void ChangeStage(int stageidx)
     {
-        SceneManager.LoadScene(stageidx);
+        GameManager.Instance.Stageidx = stageidx;
     }
 }
