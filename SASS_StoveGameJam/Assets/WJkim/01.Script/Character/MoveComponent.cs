@@ -15,24 +15,24 @@ public class MoveComponent : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        myCharacter = GetComponent<Character>();
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        
+        MoveToFront();
     }
 
     //오른쪽(정면)방향으로 지속적으로 이동시키는 함수
     private void MoveToFront()
     {
-
+        transform.Translate(Vector2.right * moveSpeed * Time.deltaTime, Space.World);
     }
 
     //점프
     public void JumpSelf()
     {
-        myCharacter.myRigid.AddForce(Vector2.up * jumpSpeed * Time.deltaTime, ForceMode.Impulse);
+        myCharacter.myRigid.AddForce(Vector2.up * jumpSpeed * Time.deltaTime, ForceMode2D.Impulse);
     }
 }
