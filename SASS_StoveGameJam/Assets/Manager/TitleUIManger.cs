@@ -2,22 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class TitleUIManger : MonoBehaviour
 {
-    [SerializeField] private Button Setting_Open_Button;
-    [SerializeField] private Button Setting_Close_Button;
 
-
-
-    void Start()
+    public void ChangeStage(int stageidx)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        SceneManager.LoadScene(stageidx);
     }
 }
