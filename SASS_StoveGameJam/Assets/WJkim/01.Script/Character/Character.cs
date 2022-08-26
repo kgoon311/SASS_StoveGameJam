@@ -13,8 +13,8 @@ public class Character : MonoBehaviour
     [SerializeField] private InGameManager inGm;
 
     //캐릭터 체력, 장애물과 접촉시 10씩 소모
-    [SerializeField] private int maxHp;
-    [SerializeField] private int currentHp;
+    public int maxHp;
+    public int currentHp;
 
     //지면에 닿아있는지 검사
     private bool isGrounded;
@@ -47,6 +47,7 @@ public class Character : MonoBehaviour
         {
             Debug.Log("게임 오버");
             //todo캐릭터 사망 애니메이션
+            //todo게임 오버 화면 출력
         }
     }
 

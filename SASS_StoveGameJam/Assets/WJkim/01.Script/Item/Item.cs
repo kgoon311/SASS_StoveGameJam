@@ -21,6 +21,6 @@ public class Item : MonoBehaviour
 
     public void Awarded()
     {
-        //todo아이템 먹을 때 어떻게 될지 결정되면 처리
+        gameObject.SetActive(false);
     }
 }

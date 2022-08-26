@@ -27,7 +27,7 @@ public class MoveComponent : MonoBehaviour
     //오른쪽(정면)방향으로 지속적으로 이동시키는 함수
     private void MoveToFront()
     {
-        transform.Translate(Vector2.right * moveSpeed * Time.deltaTime, Space.World);
+        if(myCharacter.currentHp > 0) transform.Translate(Vector2.right * moveSpeed * Time.deltaTime, Space.World);
     }
 
     //점프
