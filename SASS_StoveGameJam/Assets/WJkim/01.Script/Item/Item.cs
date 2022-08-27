@@ -6,6 +6,7 @@ public class Item : MonoBehaviour
 {
     //1번이 산, 2번이 해변
     public int itemType;
+    public Sprite mySprite;
 
     private InGameManager inGm;
     private GameManager gm;
@@ -14,6 +15,7 @@ public class Item : MonoBehaviour
     {
         inGm = FindObjectOfType<InGameManager>();
         gm = GameManager.Instance;
+        mySprite = GetComponent<SpriteRenderer>().sprite;
     }
 
     public void Awarded()
