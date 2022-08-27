@@ -9,9 +9,9 @@ public enum SoundType
 }
 public class SoundManager : Singleton<SoundManager>
 {
-    Dictionary<string, AudioClip> sounds = new Dictionary<string, AudioClip>();
-    Dictionary<SoundType, float> Volumes = new Dictionary<SoundType, float>() { { SoundType.SFX, 1 }, { SoundType.BGM, 1 } };
-    Dictionary<SoundType, AudioSource> AudioSources = new Dictionary<SoundType, AudioSource>();
+    Dictionary<string, AudioClip> sounds = new Dictionary<string, AudioClip>();//Sound폴더 안에 음원들을 담는 변수
+    Dictionary<SoundType, float> Volumes = new Dictionary<SoundType, float>() { { SoundType.SFX, 1 }, { SoundType.BGM, 1 } };//볼륨(효과음과 배경을 따로 받음) 
+    Dictionary<SoundType, AudioSource> AudioSources = new Dictionary<SoundType, AudioSource>();//효과음과 배경음을 실행시킬 오디오소스 컴퍼넌트
 
     [SerializeField] Slider BGMSlider;
     [SerializeField] Slider SFXSlider;
@@ -19,17 +19,17 @@ public class SoundManager : Singleton<SoundManager>
     protected override void Awake()
     {
         base.Awake();
-        GameObject Se = new GameObject();
-        Se.transform.parent = transform;
-        Se.AddComponent<AudioSource>();
-        AudioSources[SoundType.SFX] = Se.GetComponent<AudioSource>();
+        GameObject SFX = new GameObject();//효과음을 실행시키는 오브젝트
+        SFX.transform.parent = transform;//자식으로 넣기
+        SFX.AddComponent<AudioSource>();//오디오소스 컴퍼넌트 적용
+        AudioSources[SoundType.SFX] = SFX.GetComponent<AudioSource>();//딕셔너리 변수에 넣어주기
 
-        GameObject Bgm = new GameObject();
-        Bgm.transform.parent = transform;
-        Bgm.AddComponent<AudioSource>().loop = true;
-        AudioSources[SoundType.BGM] = Bgm.GetComponent<AudioSource>();
+        GameObject Bgm = new GameObject();//배경음을 실행시키는 오브젝트
+        Bgm.transform.parent = transform;//자식으로 넣기
+        Bgm.AddComponent<AudioSource>().loop = true;//오디오소스 컴퍼넌트 적용 배경음 이므로 루프 true
+        AudioSources[SoundType.BGM] = Bgm.GetComponent<AudioSource>();//딕셔너리 변수에 넣어주기
 
-        AudioClip[] clips = Resources.LoadAll<AudioClip>("Sound/");
+        AudioClip[] clips = Resources.LoadAll<AudioClip>("Sound/");//사운트 폴더안 오디오클립을 모두 가져오기
         foreach (AudioClip clip in clips)
             sounds[clip.name] = clip;
     }
