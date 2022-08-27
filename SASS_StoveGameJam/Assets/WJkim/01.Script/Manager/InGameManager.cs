@@ -6,8 +6,6 @@ using UnityEngine.UI;
 
 public class InGameManager : MonoBehaviour
 {
-    //TODO : 게임매니저 산, 해변 변수 정해지면 받아와서 Resources폴더의 리소스로 바닥 이미지 변경
-
     //재시작시 캐릭터 원위치용 시작위치
     private Vector2 characterStartPoint;
     //스테이지에 맞는 아이템 획득 수
@@ -82,7 +80,7 @@ public class InGameManager : MonoBehaviour
         {
             for (int i = 0; i < backgroundImg.Length; i++)
             {
-                backgroundImg[i].GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Background/Mountain");
+                backgroundImg[i].GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Textuer/Background/Mountain");
                 //바닥 변경
             }
             oceanObstacles.SetActive(false);
@@ -95,7 +93,7 @@ public class InGameManager : MonoBehaviour
         {
             for (int i = 0; i < backgroundImg.Length; i++)
             {
-                backgroundImg[i].GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Background/Ocean");
+                backgroundImg[i].GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Textuer/Background/Ocean");
                 //바닥 변경
             }
             oceanObstacles.SetActive(true);

@@ -50,7 +50,7 @@ public class Character : MonoBehaviour
         else myRigid.constraints = RigidbodyConstraints2D.FreezeRotation;
 
         //점프키 입력받고 지면에 닿아있으면 점프
-        bool isJump = inputComp.jumpAxis > 0.5 && isGrounded;
+        bool isJump = inputComp.jumpAxis > 0.5;
         if (isJump) moveComp.JumpSelf();
         //todo캐릭터 점프 애니메이션
 

@@ -20,6 +20,8 @@ public class Ending : MonoBehaviour
     [SerializeField] List<Image> ItemImageObjects = new List<Image>();//먹은 아이템 안내
     void Start()
     {
+        ItemList = GameManager.Instance.getItemList;
+
         StartCoroutine(MoveUp());
         foreach (SpriteRenderer Item in ItemObjects)
         {
