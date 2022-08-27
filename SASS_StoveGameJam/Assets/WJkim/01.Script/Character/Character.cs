@@ -59,7 +59,7 @@ public class Character : MonoBehaviour
         if(currentHp < 1)
         {
             gm.isClear = false;
-            AudioClipManager.Instance.PlaySFX("gameover");
+            //AudioClipManager.Instance.PlaySFX("gameover");
             gm.collectCount = inGm.collectItemCount;
             SceneManager.LoadScene("Title");
         }
