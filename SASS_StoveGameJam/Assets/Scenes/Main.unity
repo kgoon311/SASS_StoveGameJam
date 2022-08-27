@@ -2994,7 +2994,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 2
   m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
-  m_Color: {r: 1, g: 0.9499881, b: 0, a: 1}
+  m_Color: {r: 0.99178326, g: 1, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -3477,6 +3477,7 @@ MonoBehaviour:
   Stageidx: 2
   Setting_Panel: {fileID: 0}
   isPause: 0
+  getItemList: []
 --- !u!4 &1178286688
 Transform:
   m_ObjectHideFlags: 0
@@ -5352,7 +5353,6 @@ MonoBehaviour:
   - {fileID: 1954601449}
   - {fileID: 632843003}
   - {fileID: 1194029917}
-  getItemList: []
   items:
   - {fileID: 1079888999}
   oceanObstacles: {fileID: 118957623}
