@@ -815,7 +815,7 @@ GameObject:
   - component: {fileID: 395298327}
   - component: {fileID: 395298326}
   m_Layer: 0
-  m_Name: OceanItem1
+  m_Name: MauntainItem1
   m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -863,7 +863,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 851bef61c58c2534caa05ab0e7863444, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemType: 1
+  itemType: 2
 --- !u!212 &395298328
 SpriteRenderer:
   m_ObjectHideFlags: 0

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Item : MonoBehaviour
 {
-    //0번이 산, 1번이 해변
+    //1번이 산, 2번이 해변
     public int itemType;
 
 
