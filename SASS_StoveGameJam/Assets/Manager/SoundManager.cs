@@ -38,18 +38,18 @@ public class SoundManager : Singleton<SoundManager>
         if (ClipType == SoundType.BGM)
         {
             AudioSources[SoundType.BGM].clip = sounds[clipName];
-            AudioSources[SoundType.BGM].volume = Volume;
+            Volumes[SoundType.BGM] = Volume;
             AudioSources[SoundType.BGM].Play();
         }
         else
         {
             AudioSources[ClipType].pitch = Pitch;
-            AudioSources[ClipType].PlayOneShot(sounds[clipName], Volume);
+            Volumes[SoundType.SFX] = Volume;
+            AudioSources[ClipType].PlayOneShot(sounds[clipName], Volumes[SoundType.SFX] * SFXSlider.value);
         }
     }
     private void Update()
     {
-        AudioSources[SoundType.BGM].volume = BGMSlider.value;
-        AudioSources[SoundType.SFX].volume = SFXSlider.value;
+        AudioSources[SoundType.BGM].volume = Volumes[SoundType.BGM] * BGMSlider.value;
     }
 }
