@@ -18,9 +18,9 @@ public class Item : MonoBehaviour
 
     public void Awarded()
     {
-        if (inGm.getItemList.Count >= 8) return;
+        if (gm.getItemList.Count >= 8) return;
 
-        inGm.getItemList.Add(gameObject.GetComponent<Item>());
+        gm.getItemList.Add(gameObject.GetComponent<Item>());
         inGm.UpdateItemSlot();
         if (itemType == gm.Stageidx) inGm.collectItemCount++;
         gameObject.SetActive(false);

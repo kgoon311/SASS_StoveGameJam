@@ -5,8 +5,7 @@ using UnityEngine.UI;
 
 public class InGameManager : MonoBehaviour
 {
-    //TODO : 게임매니저 산, 해변 변수 정해지면 받아와서 Resources폴더의 리소스로 배경, 바닥 이미지 변경
-    //TODO : 배경 이미지, 바닥 이미지 여유 공간 확보
+    //TODO : 게임매니저 산, 해변 변수 정해지면 받아와서 Resources폴더의 리소스로 바닥 이미지 변경
 
     //재시작시 캐릭터 원위치용 시작위치
     private Vector2 characterStartPoint;
@@ -30,8 +29,6 @@ public class InGameManager : MonoBehaviour
     public Image[] itemSlotImgs;
 
     [Header("Items")]
-    //게임 클리어시 정산을 위한 먹은 아이템 목록
-    public List<Item> getItemList;
     //재시작시 다시 사용하기 위한 아이템 목록 -> 해변과 산 모두 받아둘까?
     [SerializeField] private Item[] items;
 
@@ -70,9 +67,9 @@ public class InGameManager : MonoBehaviour
 
     public void UpdateItemSlot()
     {
-        for(int i = 0; i<getItemList.Count; i++)
+        for(int i = 0; i<gm.getItemList.Count; i++)
         {
-            itemSlotImgs[i].sprite = getItemList[i].GetComponent<SpriteRenderer>().sprite;
+            itemSlotImgs[i].sprite = gm.getItemList[i].GetComponent<SpriteRenderer>().sprite;
         }
     }
 
@@ -142,7 +139,7 @@ public class InGameManager : MonoBehaviour
         //체력 회복
         character.currentHp = character.maxHp;
         //먹은 아이템 목록 초기화
-        getItemList.Clear();
+        gm.getItemList.Clear();
         collectItemCount = 0;
     }
 
