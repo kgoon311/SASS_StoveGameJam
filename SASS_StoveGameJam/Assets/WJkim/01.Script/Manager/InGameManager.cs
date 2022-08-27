@@ -6,12 +6,20 @@ using UnityEngine.UI;
 
 public class InGameManager : MonoBehaviour
 {
+    //게임매니저_선택한 맵의 종류 받아오기위함
+    private GameManager gm;
+
+    public bool isClear = false;
+
     //재시작시 캐릭터 원위치용 시작위치
     private Vector2 characterStartPoint;
     //스테이지에 맞는 아이템 획득 수
     public int collectItemCount = 0;
     //캐릭터 참조_배경 재상용을 위해 캐릭터와의 거리 측정에 사용
     [SerializeField] private Character character;
+
+    [Header("Tutorial")]
+    [SerializeField] private GameObject tutorialPanel;
 
     [Header("Background")]   
     //반복 사용할 배경이미지 위치와 바닥 위치
@@ -37,14 +45,9 @@ public class InGameManager : MonoBehaviour
     [SerializeField] private GameObject mountainObstacles;
     [SerializeField] private GameObject oceanItems;
     [SerializeField] private GameObject mountainItems;
-
     //맵의 끝 지점
     [SerializeField] private Transform endPoint;
 
-    //게임매니저_선택한 맵의 종류 받아오기위함
-    private GameManager gm;
-
-    public bool isClear= false;
 
     // Start is called before the first frame update
     void Start()
@@ -53,7 +56,16 @@ public class InGameManager : MonoBehaviour
         gm = GameManager.Instance;
 
         //선택한 맵 종류에 따라 이미지 변경
-        SelectMapType();    
+        SelectMapType();
+
+        if (PlayerPrefs.GetInt("isFirstTry") == 1) gm.isFirstTry = false;
+
+        //튜토리얼
+        if(gm.isFirstTry)
+        {
+            gm.isPause = true;
+            tutorialPanel.SetActive(true);
+        }
     }
 
     // Update is called once per frame
@@ -62,6 +74,14 @@ public class InGameManager : MonoBehaviour
         FlowPage();
         UpdateHpBar();
         CheckClearGame();
+    }
+
+    public void ExitTutorialPage()
+    {
+        gm.isFirstTry = false;
+        tutorialPanel.SetActive(false);
+        PlayerPrefs.SetInt("isFirstTry", 1);
+        gm.isPause = false;
     }
 
     public void UpdateItemSlot()

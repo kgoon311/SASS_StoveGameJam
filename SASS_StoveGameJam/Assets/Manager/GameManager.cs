@@ -19,6 +19,9 @@ public class GameManager : Singleton<GameManager>
     public bool isPause;
     public bool isClear;
 
+    [Header("Tutorial")]
+    public bool isFirstTry = true;
+
     #region 버튼
     public void ExitButton()
     {
