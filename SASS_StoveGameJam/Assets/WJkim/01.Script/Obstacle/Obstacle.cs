@@ -6,4 +6,5 @@ public class Obstacle : MonoBehaviour
 {
     //적용할 데미지 값
     public int damageValue;
+    public int obstacleType;
 }

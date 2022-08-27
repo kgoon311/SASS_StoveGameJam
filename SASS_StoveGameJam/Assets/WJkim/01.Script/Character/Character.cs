@@ -23,7 +23,7 @@ public class Character : MonoBehaviour
     public int currentHp;
 
     //지면에 닿아있는지 검사
-    private bool isGrounded;
+    public bool isGrounded;
 
     // Start is called before the first frame update
     void Start()
@@ -57,8 +57,8 @@ public class Character : MonoBehaviour
         //캐릭터 채력이 0이하이면 게임 오버
         if(currentHp < 1)
         {
-            Debug.Log("게임 오버");
             gm.isClear = false;
+            AudioClipManager.Instance.PlaySFX("gameover");
             SceneManager.LoadScene("Ending");
         }
     }
@@ -75,11 +75,13 @@ public class Character : MonoBehaviour
         //장애물과 충돌하면 데미지를 입고 hp를 잃는다.
         if (collision.gameObject.tag.CompareTo("Obstacle") == 0)
         {
+            Obstacle obstacle = collision.GetComponent<Obstacle>();
+
             //캐릭터 피격 애니메이션
             isHited = true;
             myAnim.SetBool("isHited", isHited);
-
-            Obstacle obstacle = collision.GetComponent<Obstacle>();
+            AudioClipManager.Instance.PlaySFX("hit"+obstacle.obstacleType);
+            
             if (currentHp >= obstacle.damageValue) currentHp -= obstacle.damageValue;
             else currentHp = 0;             
         }

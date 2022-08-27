@@ -111,6 +111,7 @@ public class InGameManager : MonoBehaviour
         {
             isClear = true;
             gm.isClear = true;
+            AudioClipManager.Instance.PlaySFX("clear");
             SceneManager.LoadScene("Ending");
         }
         else
