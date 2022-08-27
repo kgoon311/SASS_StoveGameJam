@@ -10,6 +10,9 @@ public class GameManager : Singleton<GameManager>
     [Header("Setting")]
     [SerializeField] private GameObject Setting_Panel;
 
+    [Space(3.0f)]
+    public bool isPause;
+
     #region 버튼
     public void ExitButton()
     {
@@ -23,11 +26,13 @@ public class GameManager : Singleton<GameManager>
     }
     public void SettingOpen()
     {
+        isPause = true;
         StartCoroutine(C_SettingOpen());
         SoundManager.Instance.PlaySound("Button", SoundType.SFX, 3, 1);
     }
     public void SettingClose()
     {
+        isPause = false;
         StartCoroutine(C_SettingClose());
         SoundManager.Instance.PlaySound("Button", SoundType.SFX, 3, 1);
     }
@@ -53,7 +58,7 @@ public class GameManager : Singleton<GameManager>
         while (Panel_Movetimer < 1)
         {
             Panel_Movetimer += Time.deltaTime*2;
-            Setting_Panel.transform.localPosition = Vector3.Lerp(PanelPos, Vector3.up * 900, Panel_Movetimer);
+            Setting_Panel.transform.localPosition = Vector3.Lerp(PanelPos, Vector3.up * 900, Panel_Movetimer);            
             yield return null;
         }
     }

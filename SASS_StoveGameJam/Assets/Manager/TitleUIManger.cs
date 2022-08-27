@@ -14,5 +14,6 @@ public class TitleUIManger : MonoBehaviour
     {
         GameManager.Instance.Stageidx = stageidx;
         SoundManager.Instance.PlaySound("Button", SoundType.SFX, 3, 1);
+        SceneManager.LoadScene("Main");
     }
 }

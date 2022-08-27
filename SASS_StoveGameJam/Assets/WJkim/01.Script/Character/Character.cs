@@ -39,6 +39,10 @@ public class Character : MonoBehaviour
     //캐릭터의 조건 상태 등을 확인하고 동작시키는 함수
     private void CheckCondition()
     {
+        //일시정지중 위치 고정
+        if (gm.isPause) myRigid.constraints = RigidbodyConstraints2D.FreezeAll;
+        else myRigid.constraints = RigidbodyConstraints2D.FreezeRotation;
+
         //점프키 입력받고 지면에 닿아있으면 점프
         bool isJump = inputComp.jumpAxis > 0.5 && isGrounded;
         if (isJump) moveComp.JumpSelf();
@@ -55,10 +59,12 @@ public class Character : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        //장애물과 충돌하면 데미지를 입고 점수를 잃는다.
+        //장애물과 충돌하면 데미지를 입고 hp를 잃는다.
         if (collision.gameObject.tag.CompareTo("Obstacle") == 0)
         {
-            currentHp -= collision.GetComponent<Obstacle>().damageValue;
+            Obstacle obstacle = collision.GetComponent<Obstacle>();
+            if (currentHp >= obstacle.damageValue) currentHp -= obstacle.damageValue;
+            else currentHp = 0;
             //todo캐릭터 피격 애니메이션
         }
 

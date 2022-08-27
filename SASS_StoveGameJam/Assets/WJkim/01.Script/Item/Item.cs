@@ -8,10 +8,12 @@ public class Item : MonoBehaviour
     public int itemType;
 
     private InGameManager inGm;
+    private GameManager gm;
 
     private void Start()
     {
         inGm = FindObjectOfType<InGameManager>();
+        gm = GameManager.Instance;
     }
 
     public void Awarded()
@@ -19,6 +21,8 @@ public class Item : MonoBehaviour
         if (inGm.getItemList.Count >= 8) return;
 
         inGm.getItemList.Add(gameObject.GetComponent<Item>());
+        inGm.UpdateItemSlot();
+        if (itemType == gm.Stageidx) inGm.collectItemCount++;
         gameObject.SetActive(false);
     }
 }
