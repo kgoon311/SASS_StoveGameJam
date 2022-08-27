@@ -7,12 +7,6 @@ public class InputComponent : MonoBehaviour
     //점프키 입력 여부 확인(스페이스바)
     public float jumpAxis;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
     // Update is called once per frame
     void FixedUpdate()
     {

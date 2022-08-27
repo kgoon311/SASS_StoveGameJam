@@ -33,6 +33,7 @@ public class Character : MonoBehaviour
         myRigid = GetComponent<Rigidbody2D>();
         gm = GameManager.Instance;
         myAnim = GetComponent<Animator>();
+        myAnim.SetInteger("stageIndex", gm.Stageidx);
     }
 
     // Update is called once per frame
@@ -64,11 +65,12 @@ public class Character : MonoBehaviour
         }
     }
 
-    //캐릭터 애니메이터에서 캐릭터 피격 모션 끝나면 호출
-    public void SetBoolUnHited()
+
+    IEnumerator SetUnHited()
     {
+        yield return new WaitForSeconds(0.3f);
         isHited = false;
-        myAnim.SetBool("isHited", isHited);
+        myAnim.SetBool("isHited", isHited);        
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -76,11 +78,14 @@ public class Character : MonoBehaviour
         //장애물과 충돌하면 데미지를 입고 hp를 잃는다.
         if (collision.gameObject.tag.CompareTo("Obstacle") == 0)
         {
+            if (isHited) return;
+
             Obstacle obstacle = collision.GetComponent<Obstacle>();
 
             //캐릭터 피격 애니메이션
             isHited = true;
             myAnim.SetBool("isHited", isHited);
+            StartCoroutine(SetUnHited());
             AudioClipManager.Instance.PlaySFX("hit"+obstacle.obstacleType);
             
             if (currentHp >= obstacle.damageValue) currentHp -= obstacle.damageValue;
