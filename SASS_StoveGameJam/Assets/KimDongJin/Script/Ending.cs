@@ -72,7 +72,7 @@ public class Ending : MonoBehaviour
             ScorePanel.transform.localPosition = Vector3.Lerp(ScorePanel.transform.localPosition, Vector3.zero, MoveTimer);
             yield return null;
         }
-        for (float i = 0; i < GameManager.Instance.collectCount / 3; i++)
+        for (int i = 0; i < (GameManager.Instance.collectCount + 1) / 3; i++)
         {
             StartCoroutine(StarColorChange((int)i));
             yield return new WaitForSeconds(0.5f);
