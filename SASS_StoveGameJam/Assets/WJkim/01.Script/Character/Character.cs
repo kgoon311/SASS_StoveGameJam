@@ -66,8 +66,6 @@ public class Character : MonoBehaviour
         {
             Item itemCollision = collision.GetComponent<Item>();
             itemCollision.Awarded();
-            if(itemCollision.itemType != gm.Stageidx) inGm.score -= inGm.scoreUpDownPoint;
-            else inGm.score += inGm.scoreUpDownPoint;
             //todo아이템 습득 모션
         }
     }
