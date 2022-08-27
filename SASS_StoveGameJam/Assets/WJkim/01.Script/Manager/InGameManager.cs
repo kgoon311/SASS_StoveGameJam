@@ -68,7 +68,7 @@ public class InGameManager : MonoBehaviour
     {
         for(int i = 0; i<gm.getItemList.Count; i++)
         {
-            itemSlotImgs[i].sprite = gm.getItemList[i].GetComponent<SpriteRenderer>().sprite;
+            itemSlotImgs[i].sprite = gm.getItemList[i];
         }
     }
 
@@ -110,6 +110,7 @@ public class InGameManager : MonoBehaviour
             isClear = true;
             gm.isClear = true;
             AudioClipManager.Instance.PlaySFX("clear");
+            gm.collectCount = collectItemCount;
             SceneManager.LoadScene("Ending");
         }
         else

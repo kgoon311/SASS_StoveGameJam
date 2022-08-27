@@ -22,7 +22,7 @@ public class Item : MonoBehaviour
     {
         if (gm.getItemList.Count >= 8) return;
 
-        gm.getItemList.Add(gameObject.GetComponent<Item>());
+        gm.getItemList.Add(mySprite);
         inGm.UpdateItemSlot();
         if (itemType == gm.Stageidx) inGm.collectItemCount++;
         gameObject.SetActive(false);

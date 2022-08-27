@@ -12,7 +12,8 @@ public class GameManager : Singleton<GameManager>
 
     [Header("Item")]
     //게임 클리어시 정산을 위한 먹은 아이템 목록
-    public List<Item> getItemList;
+    public List<Sprite> getItemList;
+    public int collectCount;
 
     [Header("Cheacker")]
     public bool isPause;

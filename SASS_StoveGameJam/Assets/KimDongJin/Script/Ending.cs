@@ -11,7 +11,7 @@ public class Ending : MonoBehaviour
     [Header("Anime")]
     [SerializeField] GameObject PushFloor;
     [SerializeField] List<SpriteRenderer> ItemObjects = new List<SpriteRenderer>();//보급품 오브젝트
-    private List<Item> ItemList = new List<Item>();//먹은 오브젝트
+    [SerializeField] private List<Sprite> ItemList = new List<Sprite>();//먹은 오브젝트 스프라이트
     private int ItemIdx;
 
     [Header("Finaal_Score")]
@@ -25,10 +25,10 @@ public class Ending : MonoBehaviour
         StartCoroutine(MoveUp());
         foreach (SpriteRenderer Item in ItemObjects)
         {
-            if (ItemList.Count < ItemIdx)
-            {
+            if (ItemList.Count > ItemIdx)
+            {                
+                Item.sprite = ItemList[ItemIdx];
                 ItemIdx++;
-                Item.sprite = ItemList[ItemIdx].mySprite;
             }
             else
             {
@@ -55,10 +55,10 @@ public class Ending : MonoBehaviour
         ItemIdx = 0;
         foreach (Image Item in ItemImageObjects)
         {
-            if (ItemList.Count < ItemIdx)
-            {
+            if (ItemList.Count > ItemIdx)
+            {                
+                Item.sprite = ItemList[ItemIdx];
                 ItemIdx++;
-                Item.sprite = ItemList[ItemIdx].mySprite;
             }
             else
             {
@@ -72,7 +72,7 @@ public class Ending : MonoBehaviour
             ScorePanel.transform.localPosition = Vector3.Lerp(ScorePanel.transform.localPosition, Vector3.zero, MoveTimer);
             yield return null;
         }
-        for (float i = 0; i < ItemList.Count / 3; i++)
+        for (float i = 0; i < GameManager.Instance.collectCount / 3; i++)
         {
             StartCoroutine(StarColorChange((int)i));
             yield return new WaitForSeconds(0.5f);
