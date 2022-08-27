@@ -61,7 +61,7 @@ public class Character : MonoBehaviour
             gm.isClear = false;
             AudioClipManager.Instance.PlaySFX("gameover");
             gm.collectCount = inGm.collectItemCount;
-            SceneManager.LoadScene("Ending");
+            SceneManager.LoadScene("Title");
         }
     }
 
