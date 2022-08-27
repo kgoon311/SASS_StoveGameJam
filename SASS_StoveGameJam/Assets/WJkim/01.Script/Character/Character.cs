@@ -61,7 +61,7 @@ public class Character : MonoBehaviour
             gm.isClear = false;
             AudioClipManager.Instance.PlaySFX("gameover");
             gm.collectCount = inGm.collectItemCount;
-            SceneManager.LoadScene("Ending");
+            SceneManager.LoadScene("Title");
         }
     }
 
@@ -96,7 +96,7 @@ public class Character : MonoBehaviour
         {
             Item itemCollision = collision.GetComponent<Item>();
             itemCollision.Awarded();
-            //todo아이템 습득 모션
+            AudioClipManager.Instance.PlaySFX("get");
         }
     }
 
