@@ -5,34 +5,38 @@ using UnityEngine.UI;
 
 public class InGameManager : MonoBehaviour
 {
-    //TODO : 게임매니저 산, 해변 변수 정해지면 받아와서 Resources폴더의 리소스로 배경, 바닥 이미지 변경
-    //TODO : 배경 이미지, 바닥 이미지 여유 공간 확보
+    //TODO : 게임매니저 산, 해변 변수 정해지면 받아와서 Resources폴더의 리소스로 바닥 이미지 변경
 
+    //재시작시 캐릭터 원위치용 시작위치
+    private Vector2 characterStartPoint;
+    //스테이지에 맞는 아이템 획득 수
+    public int collectItemCount = 0;
+    //캐릭터 참조_배경 재상용을 위해 캐릭터와의 거리 측정에 사용
+    [SerializeField] private Character character;
+
+    [Header("Background")]   
     //반복 사용할 배경이미지 위치와 바닥 위치
     [SerializeField] private Transform[] backgroundImg;
     private int moveImgIndex = 0;
     [SerializeField] private Transform[] ground;
     private int movePlatIndex = 0;
 
-    //캐릭터 참조_배경 재상용을 위해 캐릭터와의 거리 측정에 사용
-    [SerializeField] private Character character;
-    //재시작시 캐릭터 원위치용 시작위치
-    private Vector2 characterStartPoint;
-
-    //게임 클리어시 정산을 위한 먹은 아이템 목록
-    public List<Item> getItemList;
-
+    [Header("UI")]
     //hp바 ui
     [SerializeField] private Image hpImg;
     [SerializeField] private Text hpText;
+    //화면에 먹은 아이템 표기할 아이템 슬롯
+    public Image[] itemSlotImgs;
 
+    [Header("Items")]
     //재시작시 다시 사용하기 위한 아이템 목록 -> 해변과 산 모두 받아둘까?
     [SerializeField] private Item[] items;
 
+    [Header("Field")]
     //맵 종류에 따른 아이템과 장애물 선택에 사용_맵에 맞는 쪽을 활성화
     [SerializeField] private GameObject oceanObstacles;
-    [SerializeField] private GameObject oceanItems;
     [SerializeField] private GameObject mountainObstacles;
+    [SerializeField] private GameObject oceanItems;
     [SerializeField] private GameObject mountainItems;
 
     //맵의 끝 지점
@@ -59,6 +63,14 @@ public class InGameManager : MonoBehaviour
         FlowPage();
         UpdateHpBar();
         CheckClearGame();
+    }
+
+    public void UpdateItemSlot()
+    {
+        for(int i = 0; i<gm.getItemList.Count; i++)
+        {
+            itemSlotImgs[i].sprite = gm.getItemList[i].GetComponent<SpriteRenderer>().sprite;
+        }
     }
 
     //맵 배경 변경함수
@@ -127,7 +139,8 @@ public class InGameManager : MonoBehaviour
         //체력 회복
         character.currentHp = character.maxHp;
         //먹은 아이템 목록 초기화
-        getItemList.Clear();
+        gm.getItemList.Clear();
+        collectItemCount = 0;
     }
 
     //반복 사용을 위한 배경과 지면 이동

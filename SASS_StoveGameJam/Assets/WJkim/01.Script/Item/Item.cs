@@ -8,17 +8,21 @@ public class Item : MonoBehaviour
     public int itemType;
 
     private InGameManager inGm;
+    private GameManager gm;
 
     private void Start()
     {
         inGm = FindObjectOfType<InGameManager>();
+        gm = GameManager.Instance;
     }
 
     public void Awarded()
     {
-        if (inGm.getItemList.Count >= 8) return;
+        if (gm.getItemList.Count >= 8) return;
 
-        inGm.getItemList.Add(gameObject.GetComponent<Item>());
+        gm.getItemList.Add(gameObject.GetComponent<Item>());
+        inGm.UpdateItemSlot();
+        if (itemType == gm.Stageidx) inGm.collectItemCount++;
         gameObject.SetActive(false);
     }
 }
