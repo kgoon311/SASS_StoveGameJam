@@ -67,7 +67,7 @@ public class GameManager : Singleton<GameManager>
         while (Panel_Movetimer < 1)
         {
             Panel_Movetimer += Time.deltaTime*2;
-            Setting_Panel.transform.localPosition = Vector3.Lerp(PanelPos, Vector3.up * 900, Panel_Movetimer);            
+            Setting_Panel.transform.localPosition = Vector3.Lerp(PanelPos, Vector3.up * 1200, Panel_Movetimer);            
             yield return null;
         }
     }
