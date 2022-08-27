@@ -18,8 +18,6 @@ public class GameManager : Singleton<GameManager>
     public bool isPause;
     public bool isClear;
 
-    
-
     #region 버튼
     public void ExitButton()
     {
@@ -70,4 +68,5 @@ public class GameManager : Singleton<GameManager>
         }
     }
     #endregion
+    //버튼 스크립트
 }
