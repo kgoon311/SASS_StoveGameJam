@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class InGameManager : MonoBehaviour
@@ -109,7 +110,8 @@ public class InGameManager : MonoBehaviour
         if(character.transform.position.x > endPoint.position.x)
         {
             isClear = true;
-            Debug.Log("게임 클리어");
+            gm.isClear = true;
+            SceneManager.LoadScene("Ending");
         }
         else
         {

@@ -10,12 +10,15 @@ public class GameManager : Singleton<GameManager>
     [Header("Setting")]
     [SerializeField] private GameObject Setting_Panel;
 
-    [Space(3.0f)]
-    public bool isPause;
-
     [Header("Item")]
     //게임 클리어시 정산을 위한 먹은 아이템 목록
     public List<Item> getItemList;
+
+    [Header("Cheacker")]
+    public bool isPause;
+    public bool isClear;
+
+    
 
     #region 버튼
     public void ExitButton()

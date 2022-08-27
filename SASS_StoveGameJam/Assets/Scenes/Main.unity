@@ -690,6 +690,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemType: 1
+  mySprite: {fileID: 0}
 --- !u!212 &251523701
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -802,6 +803,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemType: 1
+  mySprite: {fileID: 0}
 --- !u!212 &305073521
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1328,6 +1330,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Obstacle1 (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 5048656573787267101, guid: 0240d84162f98e1429ad4d98e9f89b5b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0240d84162f98e1429ad4d98e9f89b5b, type: 3}
 --- !u!1 &395298324
@@ -1392,6 +1399,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemType: 2
+  mySprite: {fileID: 0}
 --- !u!212 &395298328
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1927,6 +1935,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Obstacle2 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 7951088245102109418, guid: 075dc26bbd1150d419db347a372f036b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7951088245102109421, guid: 075dc26bbd1150d419db347a372f036b,
         type: 3}
       propertyPath: damageValue
@@ -2051,6 +2064,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemType: 2
+  mySprite: {fileID: 0}
 --- !u!212 &733093252
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2167,6 +2181,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Obstacle1 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5048656573787267101, guid: 0240d84162f98e1429ad4d98e9f89b5b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0240d84162f98e1429ad4d98e9f89b5b, type: 3}
@@ -2360,6 +2379,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Obstacle2
       objectReference: {fileID: 0}
+    - target: {fileID: 7951088245102109418, guid: 075dc26bbd1150d419db347a372f036b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7951088245102109421, guid: 075dc26bbd1150d419db347a372f036b,
         type: 3}
       propertyPath: damageValue
@@ -2437,6 +2461,7 @@ GameObject:
   - component: {fileID: 929349788}
   - component: {fileID: 929349787}
   - component: {fileID: 929349793}
+  - component: {fileID: 929349794}
   m_Layer: 0
   m_Name: Character
   m_TagString: Untagged
@@ -2477,8 +2502,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfb5a5ce5b5e6e14888ddd561886b547, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 3
-  jumpSpeed: 6
+  moveSpeed: 5
+  jumpSpeed: 5
 --- !u!114 &929349789
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2506,6 +2531,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myRigid: {fileID: 0}
   inGm: {fileID: 1970202763}
+  isHited: 0
   maxHp: 100
   currentHp: 100
 --- !u!212 &929349791
@@ -2547,7 +2573,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 3
-  m_Sprite: {fileID: 21300000, guid: 87eba3c56335b2744a2b3b585d778669, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 9db9a2fdd5d66054aa468b30ac22cc31, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -2567,7 +2593,7 @@ Transform:
   m_GameObject: {fileID: 929349786}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -2.15, z: 0}
-  m_LocalScale: {x: 0.2, y: 0.2, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 4
@@ -2585,9 +2611,28 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.07286191, y: 0.0000023841858}
-  m_Size: {x: 7.0813427, y: 7.227063}
+  m_Offset: {x: -0.367867, y: 0.015201092}
+  m_Size: {x: 1.6406221, y: 2.8197737}
   m_Direction: 0
+--- !u!95 &929349794
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 929349786}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 044cf872189cd0948b5ae78884bd66ef, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &953173590
 GameObject:
   m_ObjectHideFlags: 0
@@ -2954,6 +2999,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemType: 2
+  mySprite: {fileID: 0}
 --- !u!212 &1079889000
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3196,6 +3242,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Obstacle2 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 7951088245102109418, guid: 075dc26bbd1150d419db347a372f036b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7951088245102109421, guid: 075dc26bbd1150d419db347a372f036b,
         type: 3}
       propertyPath: damageValue
@@ -3394,6 +3445,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemType: 2
+  mySprite: {fileID: 0}
 --- !u!212 &1146680523
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3943,6 +3995,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemType: 1
+  mySprite: {fileID: 0}
 --- !u!212 &1466730947
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4412,6 +4465,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemType: 2
+  mySprite: {fileID: 0}
 --- !u!212 &1664537115
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4529,6 +4583,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Obstacle1 (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 5048656573787267101, guid: 0240d84162f98e1429ad4d98e9f89b5b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0240d84162f98e1429ad4d98e9f89b5b, type: 3}
 --- !u!1 &1695500853
@@ -4593,6 +4652,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemType: 2
+  mySprite: {fileID: 0}
 --- !u!212 &1695500857
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4660,6 +4720,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Obstacle2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7951088245102109418, guid: 075dc26bbd1150d419db347a372f036b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7951088245102109421, guid: 075dc26bbd1150d419db347a372f036b,
         type: 3}
@@ -4785,6 +4850,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemType: 2
+  mySprite: {fileID: 0}
 --- !u!212 &1728441132
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5005,6 +5071,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemType: 1
+  mySprite: {fileID: 0}
 --- !u!212 &1840839108
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5228,6 +5295,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Obstacle1 (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5048656573787267101, guid: 0240d84162f98e1429ad4d98e9f89b5b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0240d84162f98e1429ad4d98e9f89b5b, type: 3}
@@ -5557,6 +5629,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemType: 2
+  mySprite: {fileID: 0}
 --- !u!212 &2084515235
 SpriteRenderer:
   m_ObjectHideFlags: 0

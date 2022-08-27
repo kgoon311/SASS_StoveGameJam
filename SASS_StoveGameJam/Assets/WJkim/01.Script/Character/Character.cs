@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(InputComponent))]
 [RequireComponent(typeof(MoveComponent))]
@@ -12,6 +13,10 @@ public class Character : MonoBehaviour
     public Rigidbody2D myRigid;
     public InGameManager inGm;
     private GameManager gm;
+    private Animator myAnim;
+
+    //피격 애니메이션 진행중인지 확인
+    public bool isHited;
 
     //캐릭터 체력, 장애물과 접촉시 10씩 소모
     public int maxHp;
@@ -27,6 +32,7 @@ public class Character : MonoBehaviour
         moveComp = GetComponent<MoveComponent>();
         myRigid = GetComponent<Rigidbody2D>();
         gm = GameManager.Instance;
+        myAnim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -52,9 +58,16 @@ public class Character : MonoBehaviour
         if(currentHp < 1)
         {
             Debug.Log("게임 오버");
-            //todo캐릭터 사망 애니메이션
-            //todo게임 오버 화면 출력
+            gm.isClear = false;
+            SceneManager.LoadScene("Ending");
         }
+    }
+
+    //캐릭터 애니메이터에서 캐릭터 피격 모션 끝나면 호출
+    public void SetBoolUnHited()
+    {
+        isHited = false;
+        myAnim.SetBool("isHited", isHited);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -62,10 +75,13 @@ public class Character : MonoBehaviour
         //장애물과 충돌하면 데미지를 입고 hp를 잃는다.
         if (collision.gameObject.tag.CompareTo("Obstacle") == 0)
         {
+            //캐릭터 피격 애니메이션
+            isHited = true;
+            myAnim.SetBool("isHited", isHited);
+
             Obstacle obstacle = collision.GetComponent<Obstacle>();
             if (currentHp >= obstacle.damageValue) currentHp -= obstacle.damageValue;
-            else currentHp = 0;
-            //todo캐릭터 피격 애니메이션
+            else currentHp = 0;             
         }
 
         if (collision.gameObject.tag.CompareTo("Item") == 0)
@@ -82,6 +98,7 @@ public class Character : MonoBehaviour
         if (collision.gameObject.tag.CompareTo("Ground") == 0)
         {
             isGrounded = true;
+            myAnim.SetBool("isJump", false);
         }
     }
 
@@ -91,6 +108,7 @@ public class Character : MonoBehaviour
         if (collision.gameObject.tag.CompareTo("Ground") == 0)
         {
             isGrounded = false;
+            myAnim.SetBool("isJump", true);
         }
     }
 }

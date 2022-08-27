@@ -7,12 +7,12 @@ public class CameraComponent : MonoBehaviour
     //카메라가 쫒아갈 대상
     [SerializeField] private Transform targetTrf;
     //카메라와 타겟 사이의 거리
-    private Vector3 offset;
+    private float offset;
 
     // Start is called before the first frame update
     void Start()
     {
-        offset = transform.position - targetTrf.position;
+        offset = transform.position.x - targetTrf.position.x;
     }
 
     // Update is called once per frame
@@ -24,6 +24,6 @@ public class CameraComponent : MonoBehaviour
     //대상 추적 이동
     private void FallowTarget()
     {
-        transform.position = targetTrf.position + offset;
+        transform.position = new Vector3(targetTrf.position.x + offset, transform.position.y, transform.position.z);
     }
 }
