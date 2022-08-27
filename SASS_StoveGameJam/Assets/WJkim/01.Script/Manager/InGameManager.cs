@@ -19,9 +19,8 @@ public class InGameManager : MonoBehaviour
     //재시작시 캐릭터 원위치용 시작위치
     private Vector2 characterStartPoint;
 
-    //게임 점수
-    public int score = 0;
-    public int scoreUpDownPoint = 10;
+    //게임 클리어시 정산을 위한 먹은 아이템 목록
+    public List<Item> getItemList;
 
     //hp바 ui
     [SerializeField] private Image hpImg;
@@ -65,22 +64,32 @@ public class InGameManager : MonoBehaviour
     //맵 배경 변경함수
     private void SelectMapType()
     {
-        /*if(gm.지역타입 == 1)
+        //산
+        if (gm.Stageidx == 1)
         {
             for (int i = 0; i < backgroundImg.Length; i++)
             {
                 backgroundImg[i].GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Background/Mountain");
                 //바닥 변경
-                //장애물과 아이템 활성화
             }
+            oceanObstacles.SetActive(false);
+            oceanItems.SetActive(false);
+            mountainObstacles.SetActive(true);
+            mountainItems.SetActive(true);
         }
-        else if(gm.지역타입 == 2)
+        //바다
+        else if (gm.Stageidx == 2)
         {
             for (int i = 0; i < backgroundImg.Length; i++)
             {
                 backgroundImg[i].GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Background/Ocean");
+                //바닥 변경
             }
-        }*/
+            oceanObstacles.SetActive(true);
+            oceanItems.SetActive(true);
+            mountainObstacles.SetActive(false);
+            mountainItems.SetActive(false);
+        }
     }
 
     private void CheckClearGame()
@@ -96,6 +105,7 @@ public class InGameManager : MonoBehaviour
         }
     }
 
+    //체력바 ui갱신
     private void UpdateHpBar()
     {
         int currentHp = character.currentHp;
@@ -107,13 +117,17 @@ public class InGameManager : MonoBehaviour
     //게임 재시작
     public void Restart()
     {
+        //캐릭터 위치 초기화
         character.transform.position = characterStartPoint;
+        //아이템 활성화
         for(int i = 0; i<items.Length; i++)
         {
             items[i].gameObject.SetActive(true);
         }
-        score = 100;
+        //체력 회복
         character.currentHp = character.maxHp;
+        //먹은 아이템 목록 초기화
+        getItemList.Clear();
     }
 
     //반복 사용을 위한 배경과 지면 이동
