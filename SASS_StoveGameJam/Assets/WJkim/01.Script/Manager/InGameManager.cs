@@ -131,18 +131,23 @@ public class InGameManager : MonoBehaviour
     //게임 재시작
     public void Restart()
     {
-        //캐릭터 위치 초기화
-        character.transform.position = characterStartPoint;
-        //아이템 활성화
-        for(int i = 0; i<items.Length; i++)
-        {
-            items[i].gameObject.SetActive(true);
-        }
-        //체력 회복
-        character.currentHp = character.maxHp;
-        //먹은 아이템 목록 초기화
-        gm.getItemList.Clear();
-        collectItemCount = 0;
+        GameManager.Instance.getItemList.Clear();
+        GameManager.Instance.collectCount = 0;
+        GameManager.Instance.isClear = false;
+        SceneManager.LoadScene(1);
+        SoundManager.Instance.PlaySound("Button", SoundType.SFX, 3, 1);
+        /* //캐릭터 위치 초기화
+         character.transform.position = characterStartPoint;
+         //아이템 활성화
+         for(int i = 0; i<items.Length; i++)
+         {
+             items[i].gameObject.SetActive(true);
+         }
+         //체력 회복
+         character.currentHp = character.maxHp;
+         //먹은 아이템 목록 초기화
+         gm.getItemList.Clear();
+         collectItemCount = 0;*/
     }
 
     //반복 사용을 위한 배경과 지면 이동

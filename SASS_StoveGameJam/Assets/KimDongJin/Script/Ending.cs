@@ -93,11 +93,17 @@ public class Ending : MonoBehaviour
     //버튼 스크립트
     public void Restart()
     {
+        GameManager.Instance.getItemList.Clear();
+        GameManager.Instance.collectCount = 0;
+        GameManager.Instance.isClear = false;
         SceneManager.LoadScene(1);
         SoundManager.Instance.PlaySound("Button", SoundType.SFX, 3, 1);
     }
     public void Title()
     {
+        GameManager.Instance.getItemList.Clear();
+        GameManager.Instance.collectCount = 0;
+        GameManager.Instance.isClear = false;
         SceneManager.LoadScene(0);
         SoundManager.Instance.PlaySound("Button", SoundType.SFX, 3, 1);
     }

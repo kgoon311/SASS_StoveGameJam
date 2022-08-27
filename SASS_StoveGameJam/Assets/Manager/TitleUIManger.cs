@@ -12,8 +12,11 @@ public class TitleUIManger : MonoBehaviour
     }
     public void ChangeStage(int stageidx)
     {
-        GameManager.Instance.Stageidx = stageidx;
         SoundManager.Instance.PlaySound("Button", SoundType.SFX, 3, 1);
         SceneManager.LoadScene("Main");
+        GameManager.Instance.Stageidx = stageidx;
+        GameManager.Instance.getItemList.Clear();
+        GameManager.Instance.collectCount = 0;
+        GameManager.Instance.isClear = false;
     }
 }
