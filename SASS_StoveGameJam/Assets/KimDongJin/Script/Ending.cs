@@ -6,10 +6,13 @@ using UnityEngine.SceneManagement;
 
 public class Ending : MonoBehaviour
 {
-
+    [Header("sprite")]
     [SerializeField] Sprite TrashImage;
+    [SerializeField] Sprite ClearImage;
+    [SerializeField] Sprite OverImage;
     [Header("Anime")]
-    [SerializeField] GameObject PushFloor;
+    [SerializeField] GameObject PushFloor;//보급품을 밀어주는 콜라이더
+    [SerializeField] GameObject UnderEffect;
     [SerializeField] List<SpriteRenderer> ItemObjects = new List<SpriteRenderer>();//보급품 오브젝트
     [SerializeField] private List<Sprite> ItemList = new List<Sprite>();//먹은 오브젝트 스프라이트
     private int ItemIdx;
@@ -47,6 +50,9 @@ public class Ending : MonoBehaviour
             yield return null;
         }
         FloorRG.velocity = Vector2.zero;
+
+        UnderEffect.GetComponent<Image>().sprite = (GameManager.Instance.isClear == true) ? ClearImage : OverImage;
+        UnderEffect.SetActive(true);
         yield return new WaitForSeconds(3f);
         StartCoroutine(DropScorePanel());
     }
