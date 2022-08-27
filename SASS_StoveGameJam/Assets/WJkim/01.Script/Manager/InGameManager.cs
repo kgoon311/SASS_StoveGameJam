@@ -20,20 +20,38 @@ public class InGameManager : MonoBehaviour
     private Vector2 characterStartPoint;
 
     //게임 점수
-    public int score = 100;
-    public int scoreLosePoint = 10;
+    public int score = 0;
+    public int scoreUpDownPoint = 10;
 
     //hp바 ui
     [SerializeField] private Image hpImg;
     [SerializeField] private Text hpText;
 
-    //재시작시 다시 사용하기 위한 아이템 목록
+    //재시작시 다시 사용하기 위한 아이템 목록 -> 해변과 산 모두 받아둘까?
     [SerializeField] private Item[] items;
+
+    //맵 종류에 따른 아이템과 장애물 선택에 사용_맵에 맞는 쪽을 활성화
+    [SerializeField] private GameObject oceanObstacles;
+    [SerializeField] private GameObject oceanItems;
+    [SerializeField] private GameObject mountainObstacles;
+    [SerializeField] private GameObject mountainItems;
+
+    //맵의 끝 지점
+    [SerializeField] private Transform endPoint;
+
+    //게임매니저_선택한 맵의 종류 받아오기위함
+    private GameManager gm;
+
+    public bool isClear= false;
 
     // Start is called before the first frame update
     void Start()
     {
         characterStartPoint = character.transform.position;
+        gm = GameManager.Instance;
+
+        //선택한 맵 종류에 따라 이미지 변경
+        SelectMapType();
     }
 
     // Update is called once per frame
@@ -41,6 +59,41 @@ public class InGameManager : MonoBehaviour
     {
         FlowPage();
         UpdateHpBar();
+        CheckClearGame();
+    }
+
+    //맵 배경 변경함수
+    private void SelectMapType()
+    {
+        /*if(gm.지역타입 == 1)
+        {
+            for (int i = 0; i < backgroundImg.Length; i++)
+            {
+                backgroundImg[i].GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Background/Mountain");
+                //바닥 변경
+                //장애물과 아이템 활성화
+            }
+        }
+        else if(gm.지역타입 == 2)
+        {
+            for (int i = 0; i < backgroundImg.Length; i++)
+            {
+                backgroundImg[i].GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Background/Ocean");
+            }
+        }*/
+    }
+
+    private void CheckClearGame()
+    {
+        if(character.transform.position.x > endPoint.position.x)
+        {
+            isClear = true;
+            Debug.Log("게임 클리어");
+        }
+        else
+        {
+            isClear = false;
+        }
     }
 
     private void UpdateHpBar()

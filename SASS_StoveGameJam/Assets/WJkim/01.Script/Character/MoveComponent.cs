@@ -27,12 +27,14 @@ public class MoveComponent : MonoBehaviour
     //오른쪽(정면)방향으로 지속적으로 이동시키는 함수
     private void MoveToFront()
     {
-        if(myCharacter.currentHp > 0) transform.Translate(Vector2.right * moveSpeed * Time.deltaTime, Space.World);
+        bool isCanMove = myCharacter.currentHp > 0 && !myCharacter.inGm.isClear;
+        if (isCanMove) transform.Translate(Vector2.right * moveSpeed * Time.deltaTime, Space.World);
     }
 
     //점프
     public void JumpSelf()
     {
-        myCharacter.myRigid.velocity = new Vector3(0,jumpSpeed,0);
+        bool isCanMove = myCharacter.currentHp > 0 && !myCharacter.inGm.isClear;
+        if (isCanMove) myCharacter.myRigid.velocity = new Vector3(0,jumpSpeed,0);
     }
 }

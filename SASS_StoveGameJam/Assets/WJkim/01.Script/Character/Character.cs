@@ -10,7 +10,8 @@ public class Character : MonoBehaviour
     private InputComponent inputComp;
     private MoveComponent moveComp;
     public Rigidbody2D myRigid;
-    [SerializeField] private InGameManager inGm;
+    public InGameManager inGm;
+    private GameManager gm;
 
     //캐릭터 체력, 장애물과 접촉시 10씩 소모
     public int maxHp;
@@ -25,6 +26,7 @@ public class Character : MonoBehaviour
         inputComp = GetComponent<InputComponent>();
         moveComp = GetComponent<MoveComponent>();
         myRigid = GetComponent<Rigidbody2D>();
+        gm = GameManager.Instance;
     }
 
     // Update is called once per frame
@@ -57,13 +59,15 @@ public class Character : MonoBehaviour
         if (collision.gameObject.tag.CompareTo("Obstacle") == 0)
         {
             currentHp -= collision.GetComponent<Obstacle>().damageValue;
-            inGm.score -= inGm.scoreLosePoint;
             //todo캐릭터 피격 애니메이션
         }
 
         if (collision.gameObject.tag.CompareTo("Item") == 0)
         {
-            collision.GetComponent<Item>().Awarded();
+            Item itemCollision = collision.GetComponent<Item>();
+            itemCollision.Awarded();
+            /*if(itemCollision.itemType != gm.지형변수)*/ inGm.score -= inGm.scoreUpDownPoint;
+            //else inGm.score += inGm.scoreUpDownPoint;
             //todo아이템 습득 모션
         }
     }
