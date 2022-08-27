@@ -96,7 +96,7 @@ public class Character : MonoBehaviour
         {
             Item itemCollision = collision.GetComponent<Item>();
             itemCollision.Awarded();
-            //todo아이템 습득 모션
+            AudioClipManager.Instance.PlaySFX("get");
         }
     }
 
