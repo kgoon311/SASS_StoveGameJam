@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7951088245102109421}
   - component: {fileID: 8343431939979617519}
   m_Layer: 0
-  m_Name: Obstacle2
+  m_Name: Obstacle3
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -72,7 +72,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 21300000, guid: 93ac035e742e15a46b22758d6a9b7ac5, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f23c0917ddfc5ad469415e5e8010626a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -110,6 +110,6 @@ CapsuleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.02000457, y: -0.11794019}
-  m_Size: {x: 1.0207795, y: 2.2242732}
+  m_Offset: {x: -0.121160746, y: 0.08161998}
+  m_Size: {x: 0.63171816, y: 2.327526}
   m_Direction: 0

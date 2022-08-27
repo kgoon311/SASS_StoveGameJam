@@ -53,7 +53,7 @@ public class InGameManager : MonoBehaviour
         gm = GameManager.Instance;
 
         //선택한 맵 종류에 따라 이미지 변경
-        SelectMapType();
+        SelectMapType();    
     }
 
     // Update is called once per frame
@@ -81,6 +81,7 @@ public class InGameManager : MonoBehaviour
             for (int i = 0; i < backgroundImg.Length; i++)
             {
                 backgroundImg[i].GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Textuer/Background/Mountain");
+                ground[i].GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Textuer/Ground/MountainGround");
                 //바닥 변경
             }
             oceanObstacles.SetActive(false);
@@ -94,6 +95,7 @@ public class InGameManager : MonoBehaviour
             for (int i = 0; i < backgroundImg.Length; i++)
             {
                 backgroundImg[i].GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Textuer/Background/Ocean");
+                ground[i].GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Textuer/Ground/OceanGround");
                 //바닥 변경
             }
             oceanObstacles.SetActive(true);
