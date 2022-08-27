@@ -96,6 +96,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageValue: 10
+  obstacleType: 1
 --- !u!70 &6597296140100412952
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

@@ -37,7 +37,11 @@ public class MoveComponent : MonoBehaviour
     //점프
     public void JumpSelf()
     {
-        bool isCanMove = myCharacter.currentHp > 0 && !myCharacter.inGm.isClear && !gm.isPause && !myCharacter.isHited;
-        if (isCanMove) myCharacter.myRigid.velocity = new Vector3(0,jumpSpeed,0);
+        bool isCanMove = myCharacter.currentHp > 0 && !myCharacter.inGm.isClear && !gm.isPause && !myCharacter.isHited && myCharacter.isGrounded;
+        if (isCanMove)
+        {
+            myCharacter.myRigid.velocity = new Vector3(0, jumpSpeed, 0);
+            AudioClipManager.Instance.PlaySFX("jump");
+        }
     }
 }
